@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-bag-shopping"></i>
+            ShopOn
+        </div>
+
+        <ul class="menu">
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="product.html">Products</a></li>
+
+            <li><a href="login.html">Login</a></li>
+
+            <li><a href="register.html">Register</a></li>
+
+        </ul>
+
+        <div class="cart-box" onclick="toggleCart()">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cart-count">0</span>
+
+        </div>
+
+    </nav>
+
+    <!-- TITLE -->
+
+    <h1 class="title">Trending Products</h1>
+
+    <!-- PRODUCTS -->
+
+    <section class="products">
+
+        <!-- SHOES -->
+
+        <div class="product">
+
+            <div class="top-icons">
+                <i class="fa-solid fa-cart-shopping"
+                    onclick="addToCart('Sports Shoes')"></i>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500">
+
+            <div class="product-info">
+
+                <h2>Sports Shoes</h2>
+
+                <p class="price">₹999</p>
+
+                <p class="desc">
+                    Comfortable running shoes for daily wear.
+                </p>
+
+                <button onclick="addToCart('Sports Shoes')">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- SHIRT -->
+
+        <div class="product">
+
+            <div class="top-icons">
+                <i class="fa-solid fa-cart-shopping"
+                    onclick="addToCart('Casual Shirt')"></i>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500">
+
+            <div class="product-info">
+
+                <h2>Shirt</h2>
+
+                <p class="price">₹599</p>
+
+                <p class="desc">
+                    Premium cotton stylish shirt.
+                </p>
+
+                <button onclick="addToCart('Casual Shirt')">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- WATCH -->
+
+        <div class="product">
+
+            <div class="top-icons">
+                <i class="fa-solid fa-cart-shopping"
+                    onclick="addToCart('Luxury Watch')"></i>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500">
+
+            <div class="product-info">
+
+                <h2>Watch</h2>
+
+                <p class="price">₹1499</p>
+
+                <p class="desc">
+                    Elegant premium analog watch.
+                </p>
+
+                <button onclick="addToCart('Luxury Watch')">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- LAPTOP -->
+
+        <div class="product">
+
+            <div class="top-icons">
+                <i class="fa-solid fa-cart-shopping"
+                    onclick="addToCart('Laptop')"></i>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500">
+
+            <div class="product-info">
+
+                <h2>Laptop</h2>
+
+                <p class="price">₹39999</p>
+
+                <p class="desc">
+                    High performance gaming laptop.
+                </p>
+
+                <button onclick="addToCart('Laptop')">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- HEADPHONES -->
+
+        <div class="product">
+
+            <div class="top-icons">
+                <i class="fa-solid fa-cart-shopping"
+                    onclick="addToCart('Headphones')"></i>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500">
+
+            <div class="product-info">
+
+                <h2>Headphones</h2>
+
+                <p class="price">₹1999</p>
+
+                <p class="desc">
+                    Wireless headphones with deep bass sound.
+                </p>
+
+                <button onclick="addToCart('Headphones')">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- HANDBAG -->
+
+        <div class="product">
+
+            <div class="top-icons">
+                <i class="fa-solid fa-cart-shopping"
+                    onclick="addToCart('Hand Bag')"></i>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500">
+
+            <div class="product-info">
+
+                <h2>Hand Bag</h2>
+
+                <p class="price">₹1299</p>
+
+                <p class="desc">
+                    Stylish women handbag.
+                </p>
+
+                <button onclick="addToCart('Hand Bag')">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- SUNGLASSES -->
+
+        <div class="product">
+
+            <div class="top-icons">
+                <i class="fa-solid fa-cart-shopping"
+                    onclick="addToCart('Sunglasses')"></i>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500">
+
+            <div class="product-info">
+
+                <h2>Sunglass</h2>
+
+                <p class="price">₹799</p>
+
+                <p class="desc">
+                    Trendy sunglasses with stylish frame.
+                </p>
+
+                <button onclick="addToCart('Sunglasses')">
+                    Buy Now
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CART -->
+
+    <div class="cart-sidebar" id="cart-sidebar">
+
+        <h2>My Cart</h2>
+
+        <ul id="cart-items"></ul>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
