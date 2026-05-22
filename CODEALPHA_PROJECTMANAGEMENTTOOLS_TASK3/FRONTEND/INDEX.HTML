@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Tool</title>
+    <link rel="stylesheet" href="STYLE.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Modern Modal Overlay Background */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6); 
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Clean Glass/Card Pop-up Form Box */
+        .modal-content {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 480px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes modalFadeIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Modern Close Window Icon */
+        .close-btn {
+            position: absolute;
+            right: 22px;
+            top: 20px;
+            font-size: 1.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f1f5f9;
+        }
+
+        .close-btn:hover {
+            color: #ef4444;
+            background: #fee2e2;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 6px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        /* Input Elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #0f172a;
+            outline: none;
+            transition: all 0.2s;
+            background: #f8fafc;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: #4f46e5;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+        }
+
+        /* Premium Form Launch Button */
+        .form-submit-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .form-submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-rocket logo-icon"></i>
+            <span>TaskFlow</span>
+        </div>
+        <nav class="nav-links">
+            <a href="LOGIN.html" class="btn-secondary">Login</a>
+            <a href="REGISTER.html" class="btn-primary">Register</a>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>Project Management Tool</h1>
+            <p class="subtitle">Organize your projects, assign tasks, and boost your productivity seamlessly in one centralized workspace.</p>
+            <button class="btn-cta" id="createProjectBtn" onclick="document.getElementById('projectModal').style.display = 'flex'">
+                <i class="fa-solid fa-plus"></i> Create Project
+            </button>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container grid-container">
+            
+            <div class="feature-card">
+                <div class="icon-wrapper folder-icon">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <h3>Manage Projects</h3>
+                <p>Create, edit, and track all your active projects in one beautifully organized dashboard.</p>
+                <button class="card-btn" id="manageProjectsBtn" onclick="alert('Opening your Active Projects Dashboard...')">Go to Projects</button>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper check-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3>Assign Tasks</h3>
+                <p>Delegate tasks to team members, set deadlines, and monitor completion progress easily.</p>
+                <button class="card-btn" id="assignTaskBtn" onclick="let task = prompt('Enter the task description:'); if(task) alert('Task assigned successfully: ' + task);">Assign Task</button>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper comment-icon">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <h3>Collaborate</h3>
+                <p>Comment, share feedback, and communicate with your team members in real-time.</p>
+                <button class="card-btn" id="addCommentBtn" onclick="let msg = prompt('Type your feedback/comment:'); if(msg) alert('Comment posted: ' + msg);">Add Comment</button>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="projectModal" class="modal" onclick="if(event.target == this) this.style.display = 'none'">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal" onclick="document.getElementById('projectModal').style.display = 'none'">&times;</span>
+            <h2><i class="fa-solid fa-folder-plus" style="color: #4f46e5;"></i> New Project</h2>
+            <p class="modal-subtitle">Set up your workspace framework details to begin tracking.</p>
+            
+            <form id="projectForm" onsubmit="alert('Success! Your new project has been created.'); document.getElementById('projectModal').style.display = 'none'; return false;">
+                <div class="form-group">
+                    <label for="projectName">Project Title</label>
+                    <input type="text" id="projectName" placeholder="e.g., Enterprise Client Dashboard" required>
+                </div>
+                <div class="form-group">
+                    <label for="projectDesc">Project Scope & Description</label>
+                    <textarea id="projectDesc" rows="4" placeholder="Outline primary goals, tasks milestones, and team scopes..." required></textarea>
+                </div>
+                <button type="submit" class="form-submit-btn">
+                    <i class="fa-solid fa-rocket"></i> Launch Project Workspace
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Project Management Tool. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
